@@ -6,8 +6,16 @@ public class DatosVehiculo {
     private long salida;
     private long tiempoEspera;
 
-    public DatosVehiculo() {
+    public DatosVehiculo(Vehiculo vehiculo) {
+        
+        this.vehiculo = vehiculo;
+        this.entrada = Reloj.ahora();
+    }
 
+    public void atiende(){
+
+        this.salida = Reloj.ahora();
+        this.tiempoEspera = this.salida - this.entrada;
     }
 
     public Vehiculo getVehiculo() {
@@ -15,12 +23,9 @@ public class DatosVehiculo {
     }
 
     public long getTiempoEspera() {
-        return tiempoEspera;
+        return tiempoEspera/1000;
     }
     
-    public void atiende(){
-
-    }
 
     @Override
     public String toString() {

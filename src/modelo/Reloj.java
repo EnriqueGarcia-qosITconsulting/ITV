@@ -1,7 +1,9 @@
 package modelo;
 
+import java.util.Calendar;
+
 public class Reloj {
-    public void ahora(){
-        
+    public static long ahora(){
+        return Calendar.getInstance().getTimeInMillis(); 
     }
 }
