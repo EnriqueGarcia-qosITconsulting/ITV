@@ -1,5 +1,10 @@
 package controlador;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -11,6 +16,21 @@ public class VehiculoController {
     private Queue <DatosVehiculo> ColaAtendidos = new LinkedList <DatosVehiculo>();
 
     public VehiculoController(){
+        File f;
+        FileReader fr;
+        BufferedReader br;
+
+        f = new File("fichero.txt");
+
+        try {
+            fr = new FileReader(f);
+            br = new BufferedReader(fr);
+            while (br.readLine() != null){
+                
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
