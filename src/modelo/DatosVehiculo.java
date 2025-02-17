@@ -5,6 +5,7 @@ public class DatosVehiculo {
     private long entrada;
     private long salida;
     private long tiempoEspera;
+    private static long tiempoTotal;
 
     public DatosVehiculo(Vehiculo vehiculo) {
         
@@ -15,17 +16,34 @@ public class DatosVehiculo {
     public void atiende(){
 
         this.salida = Reloj.ahora();
-        this.tiempoEspera = this.salida - this.entrada;
+        this.tiempoEspera = getTiempoEspera();
+        tiempoTotal += this.tiempoEspera;
+        System.out.println("Tiempo de espera: " + this.tiempoEspera + "s");
     }
 
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
 
-    public long getTiempoEspera() {
-        return tiempoEspera/1000;
+    public long getEntrada(){
+        return entrada;
     }
-    
+
+    public long getSalida(){
+        return salida;
+    }
+
+    public long getTiempoEspera() {
+        return (salida - entrada) / 1000;
+    }
+
+    public static long getTiempoTotal() {
+        return tiempoTotal;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
 
     @Override
     public String toString() {

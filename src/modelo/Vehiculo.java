@@ -45,7 +45,7 @@ public class Vehiculo {
             String letraDNI = dni.substring(8, 9);
             int numerosDNI = Integer.parseInt(dni.substring(0, 8));
             int resto = numerosDNI % 23;
-            if(letrasDNI[resto] != letraDNI) throw new DNIExcepction();
+            if(!letrasDNI[resto].equals(letraDNI)) throw new DNIExcepction();
             this.dni = dni;
         }catch (Exception e){
             throw new DNIExcepction();

@@ -25,11 +25,14 @@ public class VehiculoController {
         try {
             fr = new FileReader(f);
             br = new BufferedReader(fr);
-            while (br.readLine() != null){
-                
+            String lineaFichero = "";
+            while ((lineaFichero = br.readLine()) != null){
+                String[] partes = lineaFichero.split(",");
+                nuevoVehiculo(new Vehiculo(partes[0], partes[1], partes[2], partes[3]));
+                Thread.sleep(1000);              
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
     }
@@ -45,9 +48,10 @@ public class VehiculoController {
     public void nuevoVehiculo(Vehiculo vehiculo){
         DatosVehiculo datosVehiculo = new DatosVehiculo(vehiculo);
         ColaEspera.add(datosVehiculo);
+        System.out.println(vehiculo.getMatricula() + " añadido a la cola de espera");
     }
 
-    public void atenderVehiculo(Vehiculo vehiculo){
+    public void atenderVehiculo(){
 
         if(ColaEspera.isEmpty()){
             System.out.println("No quedan vehículos en espera");
